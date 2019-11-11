@@ -1,11 +1,9 @@
 import React from 'react';
-import FileLoader from './FileLoader';
+import NativeFileSystemTest from './NativeFileSystemTest';
 
 const App = () => (
   <div style={{ height: '50vh', width: '50vw' }}>
-    <FileLoader>
-      <div>test2</div>
-    </FileLoader>
+    <NativeFileSystemTest />
   </div>
 );
 
