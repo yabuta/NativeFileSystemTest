@@ -71,7 +71,8 @@
     "react-router-redux": "^4.0.8",
     "react-split-pane": "^0.1.87",
     "redux": "^4.0.4",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "wasm-lz4": "^1.0.0"
   },
   "repository": {
     "type": "git",

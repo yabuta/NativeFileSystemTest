@@ -32,4 +32,21 @@ export default class BagCopy {
     }
     await writer.close();
   }
+
+  async write(fileHandler) {
+    const writer = await fileHandler.createWriter({
+      keepExistingData: false
+    });
+    const options = {
+      topics: [],
+      startTime: {},
+      endTime: {},
+      noParse: true,
+      decompress: { lz4: null }
+    };
+
+    const buffer = await this.bag.getRosbagBuffer(options);
+    await writer.write(0, buffer);
+    await writer.close();
+  }
 }

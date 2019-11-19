@@ -28,13 +28,14 @@ const NativeFileSystemTest = () => {
     });
   };
 
+  /*
   const handleWriteButton = async () => {
     try {
       if (bagFile) {
-        const fileHandle = await window.chooseFileSystemEntries();
+        const fileHandler = await window.chooseFileSystemEntries();
         const bagCopy = new BagCopy(bagFile);
         bagCopy
-          .bagCopy(fileHandle)
+          .bagCopy(fileHandler)
           .then(() => {
             console.log('complete');
           })
@@ -45,6 +46,32 @@ const NativeFileSystemTest = () => {
     } catch (err) {
       console.error(err.message);
     }
+  };
+   */
+
+  const handleWriteButton = async () => {
+    try {
+      if (bagFile) {
+        const fileHandler = await window.chooseFileSystemEntries();
+        const bagCopy = new BagCopy(bagFile);
+        bagCopy
+          .write(fileHandler)
+          .then(() => {
+            console.log('complete');
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  const validate = event => {
+    bagDataProvider
+      .validateHeader(event.target.files[0])
+      .then(rosbagHeader => console.log(rosbagHeader));
   };
 
   /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -64,6 +91,18 @@ const NativeFileSystemTest = () => {
         </Button>
       </label>
       <Button onClick={handleWriteButton}>write</Button>
+      <input
+        accept="*"
+        className={classes.input}
+        id="validate-rosbag"
+        type="file"
+        onChange={validate}
+      />
+      <label htmlFor="validate-rosbag">
+        <Button variant="contained" component="span" className={classes.button}>
+          test
+        </Button>
+      </label>
     </div>
   );
   /* eslint-disable jsx-a11y/label-has-associated-control */
