@@ -59,7 +59,7 @@
     "history": "^4.10.1",
     "immutable": "^4.0.0-rc.12",
     "lodash.isequal": "^4.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-circle": "^1.1.1",
